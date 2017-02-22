@@ -36,6 +36,10 @@ class Yoohoo_Countdown_Timer{
 	public function __construct(){
 
 		// hooks go here - i.e. add_action( 'wp_head', array( $this, 'function_name' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts_frontend' ) );
+
+		//shortcodes
+		add_shortcode( 'countdown', array( $this, 'countdown_timer_shortcode' ) );
 
 	}
 
@@ -52,6 +56,31 @@ class Yoohoo_Countdown_Timer{
 	/**
 	* General functions go below
 	*/
+
+	public static function load_scripts_frontend(){
+		//add additional scripts/styles here if needed		
+	}
+
+	public static function countdown_timer_shortcode( $atts ){
+
+		$yoohoo_atts = shortcode_atts(
+			array(
+				'date' => '',
+				'time' => '',
+				'style' => '',
+				), $atts
+			);
+
+
+		wp_enqueue_script( 'yct-main', YCT_URL . 'assets/js/yct-main.js', array( 'jquery' ) );
+		wp_enqueue_script( 'yct-countdown', YCT_URL . 'assets/js/jquery.countdown.js', array( 'jquery' ) );
+		//sanitize before passing var to the JS file & sanitize in the JS.
+
+		wp_localize_script( 'yct-main', 'yct_timer_value', $yoohoo_atts );
+
+		return '<div id="yct-timer"></div><br/>';
+
+	}
 
 }
 
