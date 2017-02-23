@@ -38,7 +38,11 @@ class Yoohoo_Countdown_Timer{
 		// hooks go here - i.e. add_action( 'wp_head', array( $this, 'function_name' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'load_scripts_frontend' ) );
 
+<<<<<<< HEAD
 		//create shortcode
+=======
+		//shortcodes
+>>>>>>> origin/master
 		add_shortcode( 'countdown', array( $this, 'countdown_timer_shortcode' ) );
 
 	}
@@ -66,6 +70,7 @@ class Yoohoo_Countdown_Timer{
 		$yoohoo_atts = shortcode_atts(
 			array(
 				'date' => '',
+<<<<<<< HEAD
 				'time' => '00:00:00', //if left out of the shortcode it will default to this value otherwise it will be overwritten.
 				'timezone' => '',
 				'style' => '',
@@ -73,16 +78,33 @@ class Yoohoo_Countdown_Timer{
 				), $atts
 			);
 
+=======
+				'time' => '',
+				'style' => '',
+				), $atts
+			);
+
+
+>>>>>>> origin/master
 		wp_enqueue_script( 'yct-main', YCT_URL . 'assets/js/yct-main.js', array( 'jquery' ) );
 		wp_enqueue_script( 'yct-countdown', YCT_URL . 'assets/js/jquery.countdown.js', array( 'jquery' ) );
 		//sanitize before passing var to the JS file & sanitize in the JS.
 
 		wp_localize_script( 'yct-main', 'yct_timer_value', $yoohoo_atts );
 
+<<<<<<< HEAD
 		return '<div id="yct-timer"></div>';
+=======
+		return '<div id="yct-timer"></div><br/>';
+>>>>>>> origin/master
 
 	}
 
 }
 
+<<<<<<< HEAD
 Yoohoo_Countdown_Timer::get_instance();
+=======
+Yoohoo_Countdown_Timer::get_instance();
+
+>>>>>>> origin/master

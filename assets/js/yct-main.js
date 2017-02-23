@@ -1,5 +1,6 @@
 jQuery(document).ready(function($) {
 
+<<<<<<< HEAD
 	/**i
 	*if yct_timer_value.date default to year end or throw an error saying 'no date has been declared'. Maybe this should be done in the shortcode
 	*array year end must be loaded dynamically and not hardcoded. This can be done at a later stage.
@@ -30,6 +31,12 @@ jQuery(document).ready(function($) {
   $("#yct-timer").countdown(yct_timer_value.date + ' ' + yct_timer_value.time, function(event) {
     $(this).text(
       event.strftime(yct_format)
+=======
+  $("#yct-timer")
+  .countdown("" + yct_timer_value.date, function(event) {
+    $(this).text(
+      event.strftime('%D days %H:%M:%S')
+>>>>>>> origin/master
     );
   });
 
