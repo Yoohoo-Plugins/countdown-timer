@@ -58,7 +58,7 @@ class Yoohoo_Countdown_Timer{
 	*/
 
 	public static function load_scripts_frontend(){
-		//add additional scripts/styles here if needed		
+		//add additional scripts/styles here if needed
 	}
 
 	public static function countdown_timer_shortcode( $atts ){
@@ -73,13 +73,14 @@ class Yoohoo_Countdown_Timer{
 				), $atts
 			);
 
+		wp_enqueue_style('yct-main', YCT_URL . 'assets/css/yct-main.css');
 		wp_enqueue_script( 'yct-main', YCT_URL . 'assets/js/yct-main.js', array( 'jquery' ) );
 		wp_enqueue_script( 'yct-countdown', YCT_URL . 'assets/js/jquery.countdown.js', array( 'jquery' ) );
 		//sanitize before passing var to the JS file & sanitize in the JS.
 
 		wp_localize_script( 'yct-main', 'yct_timer_value', $yoohoo_atts );
 
-		return '<div id="yct-timer"></div>';
+		return '<div id="clock"><h1 id="yct-timer" class="dark"></h1></div>';
 
 
 	}
@@ -87,4 +88,3 @@ class Yoohoo_Countdown_Timer{
 }
 
 Yoohoo_Countdown_Timer::get_instance();
-
