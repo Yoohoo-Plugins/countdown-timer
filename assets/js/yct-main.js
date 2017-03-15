@@ -27,9 +27,20 @@ jQuery(document).ready(function($) {
 
 	}
 
+	switch(yct_timer_value.style){
+		case 'dark':
+		$('yct-timer').removeClass();
+		$('yct-timer').addClass('dark');
+		break;
+		case 'light':
+		$('yct-timer').removeClass();
+		$('yct-timer').addClass('light');
+		break;
+	}
+
   $("#yct-timer").countdown(yct_timer_value.date + ' ' + yct_timer_value.time, function(event) {
     $(this).text(
-      event.strftime(yct_format)
+      event.strftime(yct_format));
 	});
+
 });
-	
